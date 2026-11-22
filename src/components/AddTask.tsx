@@ -4,7 +4,8 @@ import type { TaskType } from "../logic/interfaces"
 const AddTask = ({ tasks, setMyTasks }: { tasks: TaskType[] | [], setMyTasks: React.Dispatch<React.SetStateAction<TaskType[]>> }) => {
     const [newTask, setNewTask] = useState<string>("")
 
-    const handleAddTask = () => {
+    const handleAddTask = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault()
         if (!newTask.trim()) return
 
         setMyTasks([
@@ -15,6 +16,11 @@ const AddTask = ({ tasks, setMyTasks }: { tasks: TaskType[] | [], setMyTasks: Re
                 completed: false
             }
         ])
+        setNewTask("")
+        const prev = e.currentTarget.previousElementSibling
+        if (prev instanceof HTMLElement) {
+            prev.focus();
+        }
     }
 
     return (
