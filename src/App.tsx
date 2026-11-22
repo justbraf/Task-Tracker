@@ -10,6 +10,7 @@ function App() {
   return (
     <div className="flex flex-col items-center bg-stone-100 p-4 h-screen">
       <h1 className="text-3xl font-bold underline mb-4">Task Tracker</h1>
+      {/* pass the tasks state variable and the setTasks setter function as props to the children components  */}
       <AddTask tasks={tasks} setMyTasks={setTasks}/>
       <ListTasks tasks={tasks} setMyTasks={setTasks}/>
     </div>
